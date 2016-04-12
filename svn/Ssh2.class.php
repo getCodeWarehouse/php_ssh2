@@ -18,7 +18,7 @@ class Ssh2
         $this->user         = isset($ary['user']) ? $ary['user'] : 'root';
         $this->psd          = isset($ary['psd']) ? $ary['psd'] : '123456';
         $this->port         = isset($ary['port']) ? $ary['port'] : '22';
-        $this->prefixPath   = isset($ary['prefixPath']) ? $ary['prefixPath'] : '/tmp/';
+        $this->prefixPath   = isset($ary['prefixPath']) ? $ary['prefixPath'] : '';
         $this->publicKey    = isset($ary['publicKey']) ? $ary['publicKey'] : '';
         $this->privateKey   = isset($ary['privateKey']) ? $ary['privateKey'] : '';
         $this->logPath      = isset($ary['logPath']) ? $ary['logPath'] : '/tmp/';
@@ -89,7 +89,7 @@ class Ssh2
             return false;
         }
         
-        $status = 0;
+        $status = array(0);
         foreach($ary['file'] as $key => $val)
         {
             foreach($val as $k1 => $v1)
@@ -101,7 +101,7 @@ class Ssh2
                         if($this->sendFile($key, $v1))
                         {
                             $status['fileStr'][] = 'Send ' . $this->ip . ':' . $this->prefixPath . $v1;
-                            $status ++;
+                            $status[0] ++;
                         }
                         else 
                         {
@@ -113,7 +113,7 @@ class Ssh2
                         if($this->delFile($v1))
                         {
                             $status['fileStr'][] = 'Del ' . $this->ip . ':' . $this->prefixPath . $v1;
-                            $status ++;
+                            $status[0] ++;
                         }
                         else 
                         {
@@ -128,7 +128,7 @@ class Ssh2
         }
         
         $this->write(implode("\r\n", $status['fileStr']), 'operRecords');
-        if($status == $ary['nums'])
+        if($status[0] == $ary['nums'])
         {
             // $name=iconv("UTF-8","gb2312", '维护文档');
             $this->write(implode("\r\n", $status['fileStr']), 'Doc', 1);
