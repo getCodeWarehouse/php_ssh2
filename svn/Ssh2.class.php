@@ -14,11 +14,11 @@ class Ssh2
     
     public function __construct( $ary = array() )
     {
-        $this->ip           = isset($ary['ip']) ? $ary['ip'] : '111.111.111.111';
+        $this->ip           = isset($ary['ip']) ? $ary['ip'] : '113.107.188.123';
         $this->user         = isset($ary['user']) ? $ary['user'] : 'root';
-        $this->psd          = isset($ary['psd']) ? $ary['psd'] : '123456';
+        $this->psd          = isset($ary['psd']) ? $ary['psd'] : 'a1984wfx';
         $this->port         = isset($ary['port']) ? $ary['port'] : '22';
-        $this->prefixPath   = isset($ary['prefixPath']) ? $ary['prefixPath'] : '';
+        $this->prefixPath   = isset($ary['prefixPath']) ? $ary['prefixPath'] : '/opt/dbtx/test_S1/html/Frt/';
         $this->publicKey    = isset($ary['publicKey']) ? $ary['publicKey'] : '';
         $this->privateKey   = isset($ary['privateKey']) ? $ary['privateKey'] : '';
         $this->logPath      = isset($ary['logPath']) ? $ary['logPath'] : '/tmp/';
@@ -34,7 +34,7 @@ class Ssh2
         
         if(!$this->connection) 
         {
-          $this->error('Connect failed');
+            $this->error('Connect failed');
         }
     }
     
@@ -63,7 +63,6 @@ class Ssh2
         if(empty( $ary ) || !is_array( $ary ))
         {
             $this->error('svn co failed');
-            return false;
         }
         
         $str = array();
@@ -86,7 +85,6 @@ class Ssh2
         if(empty($ary['file']))
         {
             $this->error('Path cant null');
-            return false;
         }
         
         $status = array(0);
@@ -170,6 +168,7 @@ class Ssh2
         catch (Exception $e) 
         {
             $this->write( $e->getMessage() );
+            exit;
         }
     }
     
