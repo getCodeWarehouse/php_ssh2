@@ -14,11 +14,11 @@ class Ssh2
     
     public function __construct( $ary = array() )
     {
-        $this->ip           = isset($ary['ip']) ? $ary['ip'] : '113.107.188.123';
+        $this->ip           = isset($ary['ip']) ? $ary['ip'] : '111.111.111.111';
         $this->user         = isset($ary['user']) ? $ary['user'] : 'root';
-        $this->psd          = isset($ary['psd']) ? $ary['psd'] : 'a1984wfx';
+        $this->psd          = isset($ary['psd']) ? $ary['psd'] : 'root';
         $this->port         = isset($ary['port']) ? $ary['port'] : '22';
-        $this->prefixPath   = isset($ary['prefixPath']) ? $ary['prefixPath'] : '/opt/dbtx/test_S1/html/Frt/';
+        $this->prefixPath   = isset($ary['prefixPath']) ? $ary['prefixPath'] : '/tmp/';
         $this->publicKey    = isset($ary['publicKey']) ? $ary['publicKey'] : '';
         $this->privateKey   = isset($ary['privateKey']) ? $ary['privateKey'] : '';
         $this->logPath      = isset($ary['logPath']) ? $ary['logPath'] : '/tmp/';
