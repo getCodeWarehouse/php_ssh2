@@ -14,9 +14,9 @@ class Ssh2
     
     public function __construct( $ary = array() )
     {
-        $this->ip           = isset($ary['ip']) ? $ary['ip'] : '111.111.111.111';
+        $this->ip           = isset($ary['ip']) ? $ary['ip'] : '123.123.123.123';
         $this->user         = isset($ary['user']) ? $ary['user'] : 'root';
-        $this->psd          = isset($ary['psd']) ? $ary['psd'] : 'root';
+        $this->psd          = isset($ary['psd']) ? $ary['psd'] : '123456';
         $this->port         = isset($ary['port']) ? $ary['port'] : '22';
         $this->prefixPath   = isset($ary['prefixPath']) ? $ary['prefixPath'] : '/tmp/';
         $this->publicKey    = isset($ary['publicKey']) ? $ary['publicKey'] : '';
